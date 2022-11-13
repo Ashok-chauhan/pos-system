@@ -1,0 +1,127 @@
+{{>header}}
+
+<div class="row">
+
+  <div class="col-6 p-3">
+      <div class="card">
+        <h5 class="card-header">POS</h5>
+        <div class="card-body">
+
+
+          <div class="row">
+            
+            
+            
+
+          <div class="cat">
+            <label class="category">
+            <input  type="radio" name="cats" value="orange"> Orange
+            </label>
+            </div>
+
+            <div class="cat">
+            <label class="category">
+            <input  type="radio" name="cats" value="apple"> Apple
+            </label>
+            </div>
+
+            <div class="cat">
+            <label class="category">
+            <input  type="radio" name="cats" value="bannana"> Bannana
+            </label>
+            </div>
+
+            <div class="cat">
+            <label class="category">
+            <input  type="radio" name="cats" value="grape"> Grape
+            </label>
+            </div>
+
+            <div class="cat">
+            <label class="category">
+            <input  type="radio" name="cats" value="sweetlime"> Sweet lime
+            </label>
+            </div>
+
+            <div class="cat">
+            <label class="category">
+            <input  type="radio" name="cats" value="pomgranet"> Pomgranet
+            </label>
+            </div>
+
+            <div class="cat">
+            <label class="category">
+            <input  type="radio" name="cats" value="sugarcane"> Sugarcane
+            </label>
+            </div>
+          
+          </div>
+
+
+          </div>
+      </div>
+  </div>
+
+
+  {{!-- <center> --}}
+    <div class="col-6 p-3">
+      <div class="card">
+        <h5 class="card-header">POS</h5>
+        <div class="card-body">
+    <form  id="bill-form">
+      <div class="mb-3">
+
+        <input
+          type="text"
+          class="form-control"
+          id="phone"
+          name="phone"
+          placeholder="Phone No."
+          aria-describedby="phone"
+        />
+
+      </div>
+      <div class="mb-3">
+
+        <input
+          type="text"
+          class="form-control"
+          id="name"
+          name="name"
+          placeholder="Name"
+        />
+      </div>
+
+      <div class="mb-3">
+
+        <input
+          type="text"
+          class="form-control"
+          id="amount"
+          name="amount"
+          placeholder="Amount"
+        />
+      </div>
+
+      <div class="mb-3">
+
+        <input
+          type="text"
+          class="form-control"
+          id="discount"
+          name="discount"
+          placeholder="discount"
+        />
+      </div>
+
+      <button type="submit" class="btn btn-primary" onclick="createCustomer();">Submit</button>
+    </form>
+
+ </div>
+      </div>
+      <!--end of card -->
+    </div>
+  {{!-- </center> --}}
+</div>
+
+{{>footer}}

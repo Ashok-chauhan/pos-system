@@ -1,0 +1,30 @@
+{{>header}}
+<div class="row">
+  <center>
+    <div class="col-4 p-3">
+      <div class="card">
+        <h5 class="card-header">Category</h5>
+        <div class="card-body">
+    <form method="post" action="/category">
+      
+      <div class="mb-3">
+
+        <input
+          type="text"
+          class="form-control"
+          id="name"
+          name="name"
+          placeholder="Name"
+        />
+      </div>
+      <button type="submit" class="btn btn-primary">Create category</button>
+    </form>
+
+ </div>
+      </div>
+      <!--end of card -->
+    </div>
+  </center>
+</div>
+
+{{>footer}}
