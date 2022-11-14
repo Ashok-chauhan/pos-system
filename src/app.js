@@ -30,6 +30,24 @@ app.get("", (req, res) => {
 app.get("/bill", (req, res) => {
   res.render("bill");
 });
+app.get("/thanks", (req, res) => {
+  // Download the helper library from https://www.twilio.com/docs/node/install
+  // Find your Account SID and Auth Token at twilio.com/console
+  // and set the environment variables. See http://twil.io/secure
+  const accountSid = "AC18727d75891aa70b1f3f95a4c4b654cc";
+  const authToken = "3973bf8e41c576865069d183d2f40737";
+  const client = require("twilio")(accountSid, authToken);
+
+  client.messages
+    .create({
+      body: "This is the ship that made the Kessel Run in fourteen parsecs?",
+      from: "+919867563127",
+      to: "+919867563127",
+    })
+    .then((message) => console.log(message.sid));
+
+  //res.render("thanks");
+});
 
 app.post("/bill", (req, res) => {
   let total_amount;
@@ -38,7 +56,7 @@ app.post("/bill", (req, res) => {
   } else {
     total_amount = req.body.amount;
   }
-  console.log(total_amount);
+  // console.log(total_amount);
   console.log(req.body);
   req.body.total_amount = total_amount;
   const customer = new Customer(req.body);
@@ -46,7 +64,8 @@ app.post("/bill", (req, res) => {
   customer
     .save()
     .then(() => {
-      res.send(customer);
+      // res.send(customer);
+      res.redirect("/thanks");
     })
     .catch((err) => {
       res.status(400).send(err);
