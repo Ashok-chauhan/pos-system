@@ -10,51 +10,14 @@
 
 
           <div class="row">
+            {{#each category}}
+            <div class="cat">
+            <label class="category">
+            <input  type="radio" name="category" value="{{this.name}}"> {{this.name}}
+            </label>
+            </div>
             
-            
-           
-
-          <div class="cat">
-            <label class="category">
-            <input  type="radio" name="category" value="orange"> Orange
-            </label>
-            </div>
-
-            <div class="cat">
-            <label class="category">
-            <input  type="radio" name="category" value="apple"> Apple
-            </label>
-            </div>
-
-            <div class="cat">
-            <label class="category">
-            <input  type="radio" name="category" value="bannana"> Bannana
-            </label>
-            </div>
-
-            <div class="cat">
-            <label class="category">
-            <input  type="radio" name="category" value="grape"> Grape
-            </label>
-            </div>
-
-            <div class="cat">
-            <label class="category">
-            <input  type="radio" name="category" value="sweetlime"> Sweet lime
-            </label>
-            </div>
-
-            <div class="cat">
-            <label class="category">
-            <input  type="radio" name="category" value="pomgranet"> Pomgranet
-            </label>
-            </div>
-
-            <div class="cat">
-            <label class="category">
-            <input  type="radio" name="category" value="sugarcane"> Sugarcane
-            </label>
-            </div>
+            {{/each}}
           
           </div>
 

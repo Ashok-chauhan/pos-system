@@ -1,0 +1,68 @@
+{{>header}}
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+    <h3>Consolidated by categories</h3>
+        <form  id="categoryByDate-form">
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Search by date</label>
+            <input type="date" class="form-control" id="categoryearning" name="categoryearning" required>
+            <div id="categoryeraningHelp" class="form-text">By Default it shows current date amount.</div>
+          </div>
+          
+          <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+        
+    <div  class="col" id="category-date"></div>
+    </div>
+
+{{!-- search by customer --}}
+    <div class="col" >
+     <h3>Consolidated by customer</h3>
+        <form  id="customer-form">
+          <div class="mb-3">
+            <label for="phone" class="form-label">Search by phone</label>
+            <input type="text" class="form-control" id="phone" name="phone" required>
+            
+          </div>
+          
+          <button type="submit" class="btn btn-primary">Search customer</button>
+        </form>
+        
+    <div  class="col" id="customer"></div>
+    </div>
+
+
+
+    {{!-- dtaials by date --}}
+    <div class="col">
+      
+      <h3> By date</h3>
+        <form  id="detail-date-form">
+          <div class="mb-3">
+            <label for="phone" class="form-label">Search by date</label>
+            <input type="date" class="form-control" id="by-date" name="by-date" required>
+            
+          </div>
+          
+          <button type="submit" class="btn btn-primary">Search </button>
+        </form>
+        
+    <div  class="col" id="details"></div>
+    </div>
+
+
+    </div>
+
+
+
+    
+    
+  </div>
+</div>
+
+
+{{>footer}}
+<script type="text/javascript" src="/js/easyHTTP.js"></script>
+<script type="text/javascript" src="/js/app.js"></script>

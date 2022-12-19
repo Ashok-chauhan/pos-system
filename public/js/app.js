@@ -97,3 +97,139 @@ class EassyHTTP {
 // http.get('/bill')
 // .then(data => console.log(data))
 // .catch((err) => console.log(err));
+//require("../db/mongoose");
+
+//const Customer = require("../models/customers");
+//const Customer = require("../../models/customers");
+//const db = require("../../db/mongoose");
+
+async function postData(url = "", data = {}) {
+  const response = await fetch(url, {
+    method: "POST",
+    mode: "cors",
+    cache: "no-cache",
+    headers: {
+      "Content-Type": "application/json",
+      //"Content-Type": "application/x-www-form-urlencoded",
+      Accept: "application/json",
+    },
+    redirect: "follow",
+    referrerPolicy: "no-referrer",
+    body: JSON.stringify(data),
+  });
+  return response.json();
+}
+//////////////////////////////  IN USE ////////////////////////////////////////////
+const httpreq = new easyHTTP();
+const catByDate = document.querySelector("#categoryByDate-form");
+const searchDate = document.querySelector("input");
+const datadiv = document.querySelector("#category-date");
+catByDate.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  datadiv.textContent = "Loading....";
+
+  const date = searchDate.value;
+
+  httpreq
+    .post("http://localhost:3000/analytics/categoryByDate", {
+      date: date,
+    })
+    .then((data) => {
+      let ele = "";
+      for (var i = 0; i < data.length; i++) {
+        ele += `<tr><td>${data[i]._id.category}</td><td>${data[i].totalEarning}</td><td>${date}</td></tr>`;
+      }
+
+      datadiv.innerHTML = `<table class="table table-striped table-hover">
+      <thead>
+        <tr>
+          <th scope="col">Category</th>
+          <th scope="col">Total Earning</th>
+          <th scope="col">Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        ${ele}
+      </tbody>
+    </table>`;
+    })
+    .catch((err) => console.log(err));
+});
+
+/// search earning by customer
+
+const customer_form = document.querySelector("#customer-form");
+const customer_phone = document.querySelector("#phone");
+const customer_div = document.querySelector("#customer");
+customer_form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  customer_div.textContent = "Loading....";
+
+  const phone = customer_phone.value;
+
+  httpreq
+    .post("http://localhost:3000/analytics/customer", {
+      phone: phone,
+    })
+    .then((data) => {
+      let ele = "";
+      for (var i = 0; i < data.length; i++) {
+        ele += `<tr><td>${data[i]._id.category}</td><td>${data[i].totalEarning}</td></tr>`;
+      }
+
+      customer_div.innerHTML = `<table class="table table-striped table-hover">
+      <thead>
+        <tr>
+          <th scope="col">Category</th>
+          <th scope="col">Total Earning</th>
+          
+        </tr>
+      </thead>
+      <tbody>
+        ${ele}
+      </tbody>
+    </table>`;
+    })
+    .catch((err) => console.log(err));
+});
+
+/////// details by date ////////////////
+
+const detail_date_form = document.querySelector("#detail-date-form");
+const by_date = document.querySelector("#by-date");
+const details_div = document.querySelector("#details");
+detail_date_form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  details_div.textContent = "Loading....";
+
+  const date = by_date.value;
+
+  httpreq
+    .post("http://localhost:3000/analytics/detailsbydate", {
+      date: date,
+    })
+    .then((data) => {
+      let ele = "";
+      for (var i = 0; i < data.length; i++) {
+        ele += `<tr><td>${data[i].phone}</td><td>${data[i].name}</td><td>${data[i].category}</td><td>${data[i].amount}</td><td>${data[i].discount}</td><td>${data[i].total_amount}</td></tr>`;
+      }
+
+      details_div.innerHTML = `<table class="table table-striped table-hover">
+      <thead>
+        <tr>
+          <th scope="col">Phone</th>
+          <th scope="col">Name</th>
+          <th scope="col">Category</th>
+          <th scope="col">Amount</th>
+          <th scope="col">Discount</th>
+          <th scope="col">Earning</th>
+          
+        </tr>
+      </thead>
+      <tbody>
+        ${ele}
+      </tbody>
+    </table>`;
+    })
+    .catch((err) => console.log(err));
+});
