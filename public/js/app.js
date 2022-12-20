@@ -131,7 +131,7 @@ catByDate.addEventListener("submit", async (e) => {
   const date = searchDate.value;
 
   httpreq
-    .post("http://localhost:3001/analytics/categoryByDate", {
+    .post("http://127.0.0.1:3001/analytics/categoryByDate", {
       date: date,
     })
     .then((data) => {
@@ -168,7 +168,7 @@ customer_form.addEventListener("submit", async (e) => {
   const phone = customer_phone.value;
 
   httpreq
-    .post("http://localhost:3001/analytics/customer", {
+    .post("http://127.0.0.1:3001/analytics/customer", {
       phone: phone,
     })
     .then((data) => {
@@ -205,7 +205,7 @@ detail_date_form.addEventListener("submit", async (e) => {
   const date = by_date.value;
 
   httpreq
-    .post("http://localhost:3001/analytics/detailsbydate", {
+    .post("http://127.0.0.1:3001/analytics/detailsbydate", {
       date: date,
     })
     .then((data) => {
