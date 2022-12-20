@@ -8,10 +8,10 @@ const mongoose = require("mongoose");
 
 mongoose
   .connect(process.env.DBConnection, {
-    maxPoolSize: 50,
-    wtimeoutMS: 2500,
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
+    // maxPoolSize: 50,
+    // wtimeoutMS: 2500,
+    // useNewUrlParser: true,
+    // useUnifiedTopology: true,
     //useFindAndModify: false,
   })
   .then(console.log("Database connected!"))
