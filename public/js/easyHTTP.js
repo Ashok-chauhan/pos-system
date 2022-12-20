@@ -13,7 +13,10 @@ class easyHTTP {
       mode: "cors",
       cache: "no-cache",
       credentials: "same-origin",
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+      },
       body: JSON.stringify(data),
     });
     const resData = await response.json();
