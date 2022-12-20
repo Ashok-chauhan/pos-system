@@ -6,10 +6,13 @@ const mongoose = require("mongoose");
 //   //useCreateIndex: true,
 // });
 
-mongoose.connect(process.env.DBConnection, {
-  maxPoolSize: 50,
-  wtimeoutMS: 2500,
-  useNewUrlParser: true,
-  //useFindAndModify: false,
-});
+mongoose
+  .connect(process.env.DBConnection, {
+    maxPoolSize: 50,
+    wtimeoutMS: 2500,
+    useNewUrlParser: true,
+    //useFindAndModify: false,
+  })
+  .then(console.log("Database connected!"))
+  .catch((err) => console.log(`error >>: ${err}`));
 module.exports = mongoose;
