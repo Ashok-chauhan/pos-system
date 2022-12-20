@@ -11,6 +11,7 @@ mongoose
     maxPoolSize: 50,
     wtimeoutMS: 2500,
     useNewUrlParser: true,
+    useUnifiedTopology: true,
     //useFindAndModify: false,
   })
   .then(console.log("Database connected!"))
