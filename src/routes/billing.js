@@ -58,7 +58,7 @@ router.post("/bill", (req, res) => {
     total_amount = req.body.amount;
   }
   // console.log(total_amount);
-  console.log(req.body);
+
   req.body.total_amount = total_amount;
   const customer = new Customer(req.body);
 
