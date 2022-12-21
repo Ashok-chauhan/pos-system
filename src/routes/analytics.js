@@ -18,44 +18,42 @@ router.get("", async (req, res) => {
   if (!session.is_pos) {
     return res.render("login", { error: "error" });
   }
+  const dt = new Date();
+  const currentDate =
+    dt.getFullYear() + "-" + parseInt(dt.getMonth() + 1) + "-" + dt.getDate();
 
-  // const earningByCategory = await Customer.aggregate([
-  //   {
-  //     $addFields: {
-  //       onlyDate: {
-  //         $dateToString: {
-  //           format: "%Y-%m-%d",
-  //           date: "$date",
-  //         },
-  //       },
-  //     },
-  //   },
-  //   {
-  //     $match: {
-  //       onlyDate: {
-  //         $eq: "2022-11-23",
-  //       },
-  //     },
-  //   },
-  //   {
-  //     $group: {
-  //       _id: { category: "$category" },
-  //       totalEarning: { $sum: "$total_amount" },
-  //     },
-  //   },
-  // ]);
-  // //console.log(earningByCategory);
-  // res.render("analytics", { earningByCategory });
-  res.render("analytics");
+  const currentDateEarning = await Customer.aggregate([
+    {
+      $addFields: {
+        onlyDate: {
+          $dateToString: {
+            format: "%Y-%m-%d",
+            date: "$date",
+          },
+        },
+      },
+    },
+    {
+      $match: {
+        onlyDate: {
+          $eq: currentDate,
+        },
+      },
+    },
+    {
+      $group: {
+        _id: { date: currentDate },
+        totalEarning: { $sum: "$total_amount" },
+        amount: { $sum: "$amount" },
+        discount: { $sum: "$discount" },
+      },
+    },
+  ]);
+
+  res.render("analytics", { currentDateEarning });
 });
 
 router.post("/categoryByDate", async (req, res) => {
-  //console.log(req.body.date + "###");
-  const obj = {
-    name: "kumar",
-    age: 36,
-  };
-
   const earningByCategory = await Customer.aggregate([
     {
       $addFields: {
@@ -83,7 +81,6 @@ router.post("/categoryByDate", async (req, res) => {
   ]);
 
   return res.send(earningByCategory);
-  //res.send(obj);
 });
 
 router.post("/customer", async (req, res) => {

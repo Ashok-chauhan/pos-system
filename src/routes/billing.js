@@ -14,7 +14,7 @@ router.use(bodyParser.urlencoded({ extended: true }));
 
 var session;
 router.get("", (req, res) => {
-  res.render("index");
+  res.render("login");
 });
 router.get("/bill", async (req, res) => {
   session = req.session;

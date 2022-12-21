@@ -5,7 +5,7 @@
       <div class="card">
         <h5 class="card-header">Category</h5>
         <div class="card-body">
-    <form method="post" action="/admin/category">
+    <form method="post" action="/admin/categorySave">
       
       <div class="mb-3">
 
@@ -15,10 +15,12 @@
           id="name"
           name="name"
           placeholder="Name"
+          value="{{category.name}}"
         />
+        <input type="hidden" id="catid" name="catid" value="{{category._id}}"/>
       </div>
       <div class="d-grid gap-2">
-        <button type="submit" class="btn btn-primary">Create category</button>
+        <button type="submit" class="btn btn-primary">Edit category</button>
       </div>
       
     </form>
@@ -28,19 +30,7 @@
       <!--end of card -->
     </div>
 
-    <div class="col-sm-12 col-md-6 p-3">
-      <table class="table table-success table-striped ">
-      {{#each categories}}
-      <tr>
-        <td>{{this.name}}</td>
-        <td><a href="/admin/delcat/{{this._id}}">Delete</a></td>
-        <td><a href="/admin/editcat/{{this._id}}">Edit</a></td>
-      </tr>
-      
-      {{/each}}
-      </table>
-      
-    </div>
+   
   
 </div>
 

@@ -1,9 +1,17 @@
 {{>header}}
 
 <div class="container">
-  <div class="row">
-    <div class="col">
-    <h3>Consolidated by categories</h3>
+  
+  <div class="row text-bg-info p-2">
+    <div class="col-sm-12 col-md-12 alert-info">
+      Total Earning : {{currentDateEarning.[0].totalEarning}}
+      Total Amount : {{currentDateEarning.[0].amount}}
+      Discount : {{currentDateEarning.[0].discount}}
+    </div>
+  </div>
+  <div class="row" >
+    <div class="col-sm-12 col-md-4">
+    <h4>Consolidated by categories</h4>
         <form  id="categoryByDate-form">
           <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Search by date</label>
@@ -18,8 +26,8 @@
     </div>
 
 {{!-- search by customer --}}
-    <div class="col" >
-     <h3>Consolidated by customer</h3>
+    <div class="col-sm-12 col-md-4" >
+     <h4>Consolidated by customer</h4>
         <form  id="customer-form">
           <div class="mb-3">
             <label for="phone" class="form-label">Search by phone</label>
@@ -36,9 +44,9 @@
 
 
     {{!-- dtaials by date --}}
-    <div class="col">
+    <div class="col-sm-12 col-md-4">
       
-      <h3> By date</h3>
+      <h4> By date</h4>
         <form  id="detail-date-form">
           <div class="mb-3">
             <label for="phone" class="form-label">Search by date</label>
@@ -49,15 +57,8 @@
           <button type="submit" class="btn btn-primary">Search </button>
         </form>
         
-    <div  class="col" id="details"></div>
+    <div  id="details"></div>
     </div>
-
-
-    </div>
-
-
-
-    
     
   </div>
 </div>
